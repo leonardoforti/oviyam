@@ -8,7 +8,7 @@ RUN apt-get install unzip
 WORKDIR  /ovitmp
 
 ADD https://iweb.dl.sourceforge.net/project/dcm4che/Oviyam/${ovi_ver}/Oviyam-${ovi_ver}-bin.zip oviyam.zip
-ADD https://iweb.dl.sourceforge.net/project/dcm4che/Oviyam/iOviyam%20${ovi_ver}/iOviyam-${iovi_ver}-bin.zip ioviyam.zip
+ADD https://iweb.dl.sourceforge.net/project/dcm4che/Oviyam/iOviyam%20${iovi_ver}/iOviyam-${iovi_ver}-bin.zip ioviyam.zip
 
 RUN unzip oviyam.zip && unzip ioviyam.zip && \ 
     cp /ovitmp/Oviyam-${ovi_ver}-bin/Oviyam-${ovi_ver}-bin/oviyam2.war /usr/local/tomcat/webapps/oviyam2.war && \
