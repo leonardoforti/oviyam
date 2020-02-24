@@ -1,15 +1,18 @@
 FROM tomcat:latest
 
-ENV version 2.7.3
+ENV ovi_ver 2.7.3
+ENV iovi_ver 2.1
 
 RUN apt-get install unzip
 
 WORKDIR  /ovitmp
 
-ADD https://iweb.dl.sourceforge.net/project/dcm4che/Oviyam/${version}/Oviyam-${version}-bin.zip oviyam.zip 
+ADD https://iweb.dl.sourceforge.net/project/dcm4che/Oviyam/${ovi_ver}/Oviyam-${ovi_ver}-bin.zip oviyam.zip
+ADD https://iweb.dl.sourceforge.net/project/dcm4che/Oviyam/iOviyam%20${ovi_ver}/iOviyam-${iovi_ver}-bin.zip ioviyam.zip
 
-RUN unzip oviyam.zip && \ 
-    cp /ovitmp/Oviyam-${version}-bin/Oviyam-${version}-bin/oviyam2.war /usr/local/tomcat/webapps/ROOT.war && \
-    cp /ovitmp/Oviyam-${version}-bin/tomcat/*.jar  /usr/local/tomcat/lib
+RUN unzip oviyam.zip && unzip ioviyam.zip && \ 
+    cp /ovitmp/Oviyam-${ovi_ver}-bin/Oviyam-${ovi_ver}-bin/oviyam2.war /usr/local/tomcat/webapps/oviyam2.war && \
+    cp /ovitmp/Oviyam-${ovi_ver}-bin/tomcat/*.jar /usr/local/tomcat/lib && \
+    cp /ovitmp/iOviyam-${iovi_ver}-bin/ioviyam2.war /usr/local/tomcat/webapps/ioviyam2.war
     
 COPY tomcat-users.xml /usr/local/tomcat/conf/tomcat-users.xml
