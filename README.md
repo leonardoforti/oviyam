@@ -3,7 +3,7 @@
 ## Build ##
 
 ```bash
-docker build -t oviyam:2.7.4 .
+docker build -t oviyam:2.7.4
 ```
 
 ## Run ##
