@@ -1,6 +1,6 @@
 FROM tomcat:latest
 
-ENV ovi_ver 2.7.3
+ENV ovi_ver 2.7.4
 ENV iovi_ver 2.1
 
 RUN apt-get install unzip
